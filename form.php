@@ -43,11 +43,11 @@
 			<fieldset>
 				<p>
 					<label for="name">Name:</label><?php echo @$name_error; ?>
-					<input type="text" id="name" name="name" value="<?php echo @$name ?>" class="required" />
+					<input type="text" id="name" name="name" value="<?php echo @$name ?>" class="required" required />
 				</p>
 				<p>
 					<label for="email">Email:</label><?php echo @$email_error; ?>
-					<input type="text" id="email" name="email" value="<?php echo @$email ?>" class="email required" />
+					<input type="email" id="email" name="email" value="<?php echo @$email ?>" class="email required" required />
 				</p>
 				<p>
 					<label for="message">Message:</label><?php echo @$message_error; ?>
@@ -57,7 +57,20 @@
 			</fieldset>
 		</form>
         
-<?php include('inc/footer.inc.php'); ?>        
+<?php include('inc/footer.inc.php'); ?> 
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+            $(document).ready(function(){
+            $('#contact-form').submit(function(e){
+                if($('#name').val == ' ' || $('#email').val() == ''){
+                    alert('Please fill out both the name and email fields');
+                    e.preventDefault();
+                }
+             });
+        
+        });
+            </script>
 
 	</body>
 </html>
